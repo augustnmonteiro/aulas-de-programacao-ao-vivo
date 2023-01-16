@@ -1,4 +1,5 @@
-let musculos = [    ["Músculo esquelético", "Bíceps braquial", "Braço superior"],
+let musculos = [    
+    ["Músculo esquelético", "Bíceps braquial", "Braço superior"],
     ["Músculo esquelético", "Quadríceps femoral", "Coxa"],
     ["Músculo esquelético", "Trapezóide", "Costas superiores"],
     ["Músculo esquelético", "Deltóide", "Ombro"],
@@ -20,3 +21,19 @@ let musculos = [    ["Músculo esquelético", "Bíceps braquial", "Braço superi
     ["Músculo esquelético", "Músculo estiloide ulnar", "Punho"],
     ["Músculo esquelético", "Músculo extensor do cotovelo", "Braço"]
 ]
+
+let esqueletico = [];
+let liso = [];
+let cardiaco = [];
+
+for (let i=0; i<musculos.length; i++) {
+
+  if (musculos[i][0] == "Músculo esquelético") {
+    esqueletico.push(musculos[i]);
+  } else if (musculos[i][0] == "Músculo liso") {
+    liso.push(musculos[i]);
+  } else if (musculos[i][0] == "Músculo cardíaco") {
+    cardiaco.push(musculos[i]);
+  }
+
+}
