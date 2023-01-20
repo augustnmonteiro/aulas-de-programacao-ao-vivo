@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contador - Aula</title>
+  </head>
+  <body>
+    <h1>Contador</h1>
+    <span id="valor-contador-1" style="color: red;">0</span>
+    <button id="button-contador-1">+1</button>
+    <span id="valor-contador-2" style="color: green;">0</span>
+    <button>+1</button>
+    <span id="valor-contador-3" style="color: blue;">0</span>
+    <button>+1</button>
+    <script type="text/javascript">
+        let contador = 0;
+        function buttonClicado() {
+          contador += 1;
+          document.querySelector("#valor-contador-1").innerText = contador;
+        }
+        document.querySelector("#button-contador-1").onclick = buttonClicado; 
+    </script>
+  </body>
+</html>
