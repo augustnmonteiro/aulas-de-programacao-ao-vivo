@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contador - Aula</title>
+  </head>
+  <body>
+    <h1>Contador</h1>
+    <span id="valor-contador-1" style="color: red;">0</span>
+    <button id="button-contador-mais-1">+1</button>
+    <button id="button-contador-menos-1">-1</button>
+    <button id="button-contador-mais-10">+10</button>
+    <button id="button-contador-menos-10">-10</button>
+    <button id="button-contador-mais-100">+100</button>
+    <button id="button-contador-menos-100">-100</button>
+    <br/>
+    <br/>
+    <br/>
+    <span id="numero-aleatorio" style="color: green;"></span>
+    <button id="gerar-numero">Gerar Numero</button>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <h1>Desafio</h1>
+    <ul>
+      <li>Mostre o número atual da contagem</li>
+      <li>Botão para aumentar o número de 1 em 1</li>
+      <li>Botão para diminuir o número de 1 em 1</li>
+      <li>Botão para adicionar de 10 em 10</li>
+      <li>Botão para diminuir de 10 em 10</li>
+      <li>Botão para adicionar de 100 em 100</li>
+      <li>Botão para diminuir de 100 em 100</li>
+      <li>Um botão que gere um número aleatório usando o contador como número máximo</li>
+      <li>Mostrar o numero gerado (o número do contador deve continuar a amostra.</li>
+    </ul>
+    <script type="text/javascript">
+        let contador = 0;
+        function buttonMais1() {
+          contador += 1;
+          document.querySelector("#valor-contador-1").innerText = contador;
+        }
+        function buttonMenos1() {
+          if (contador > 0) {
+            contador -= 1;
+            document.querySelector("#valor-contador-1").innerText = contador;
+          }
+        }
+        function buttonMais10() {
+          contador += 10;
+          document.querySelector("#valor-contador-1").innerText = contador;
+        }
+        function buttonMenos10() {
+          if (contador >= 10) {
+            contador -= 10;
+            document.querySelector("#valor-contador-1").innerText = contador;
+          }
+        }
+        function buttonMais100() {
+          contador += 100;
+          document.querySelector("#valor-contador-1").innerText = contador;
+        }
+        function buttonMenos100() {
+          if (contador >= 100) {
+            contador -= 100;
+            document.querySelector("#valor-contador-1").innerText = contador;
+          }
+        }
+        function gerarNumero() {
+          let numero = Math.floor(Math.abs(Math.random() * (contador - 0) + 0));
+          document.querySelector("#numero-aleatorio").innerText = numero;
+        }
+        document.querySelector("#button-contador-mais-1").onclick = buttonMais1; 
+        document.querySelector("#button-contador-menos-1").onclick = buttonMenos1; 
+        document.querySelector("#button-contador-mais-10").onclick = buttonMais10; 
+        document.querySelector("#button-contador-menos-10").onclick = buttonMenos10; 
+        document.querySelector("#button-contador-mais-100").onclick = buttonMais100; 
+        document.querySelector("#button-contador-menos-100").onclick = buttonMenos100; 
+        document.querySelector("#gerar-numero").onclick = gerarNumero; 
+    </script>
+  </body>
+</html>

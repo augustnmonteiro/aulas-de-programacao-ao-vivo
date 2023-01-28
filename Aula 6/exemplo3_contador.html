@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contador - Aula</title>
+  </head>
+  <body>
+    <h1>Contador Ex 3</h1>
+    <span id="valor-contador-1">0</span>
+    <button id="button-contador-1">+1</button>
+    <button id="button-contador-2">-1</button>
+    <button id="button-contador-3">+10</button>
+    <button id="button-contador-4">-10</button>
+    <button id="button-contador-5">+100</button>
+    <button id="button-contador-6">-100</button>
+    <br/>
+    <br/>
+    <br/>
+    <span id="valor-contador-2">0</span>
+    <button id="button-contador-7">Gerar Número</button>
+    <script type="text/javascript">
+        function buttonMais1() {
+          let somar1 = document.querySelector("#valor-contador-1").innerText;
+          somar1 = parseInt(somar1);
+          document.querySelector("#valor-contador-1").innerText = somar1 + 1;
+        }
+        document.querySelector("#button-contador-1").onclick = buttonMais1;
+
+        function buttonMenos1() {
+          let menos1 = document.querySelector("#valor-contador-1").innerText;
+          menos1 = parseInt(menos1);
+          if(menos1 > 0 ){
+            document.querySelector("#valor-contador-1").innerText = menos1 - 1;
+          }
+        }
+        document.querySelector("#button-contador-2").onclick = buttonMenos1;
+
+        function buttonMais10() {
+          let mais10 = document.querySelector("#valor-contador-1").innerText;
+          mais10 = parseInt(mais10);
+          document.querySelector("#valor-contador-1").innerText = mais10 + 10;
+        }
+        document.querySelector("#button-contador-3").onclick = buttonMais10;
+
+        function buttonMenos10() {
+          let menos10 = document.querySelector("#valor-contador-1").innerText;
+          menos10 = parseInt(menos10);
+          if(menos10 >= 10){
+            document.querySelector("#valor-contador-1").innerText = menos10 - 10;
+          }
+        }
+        document.querySelector("#button-contador-4").onclick = buttonMenos10;
+
+        function buttonMais100() {
+          let mais100 = document.querySelector("#valor-contador-1").innerText;
+          mais100 = parseInt(mais100);
+          document.querySelector("#valor-contador-1").innerText = mais100 + 100;
+        }
+        document.querySelector("#button-contador-5").onclick = buttonMais100;
+
+        function buttonMenos100() {
+          let menos100 = document.querySelector("#valor-contador-1").innerText;
+          menos100 = parseInt(menos100);
+          if(menos100 >= 100){
+            document.querySelector("#valor-contador-1").innerText = menos100 - 100;
+          }
+        }
+        document.querySelector("#button-contador-6").onclick = buttonMenos100;
+
+        function gerarNumeroAleatorio() {
+          let numeroAleatorio = document.querySelector("#valor-contador-1").innerText;
+          numeroAleatorio = parseInt(numeroAleatorio);
+          if(numeroAleatorio != 0){
+            document.querySelector("#valor-contador-2").innerText = Math.floor(Math.abs(Math.random() * (0, numeroAleatorio )));
+          }
+        }
+        document.querySelector("#button-contador-7").onclick = gerarNumeroAleatorio;
+        
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Imagem Aleatorio</title>
+    <meta charset="UTF-8"/> 
+  </head>
+  <body>
+    <button id="mudar-imagen">Mudar Imagem</button>
+    <script type="text/javascript">
+      function gerarNumeroAleatorio(min, max) {
+        return Math.floor(Math.random() * (max));
+      }
+
+      function mudarImagem() {
+        let imagem = gerarNumeroAleatorio(0, 7);
+        document.body.style.backgroundImage = 'url(./img/' + imagem + '.jpg)';
+      }
+
+
+      document.querySelector("#mudar-imagen").addEventListener('click', mudarImagem);
+    </script>
+  </body>
+</html>

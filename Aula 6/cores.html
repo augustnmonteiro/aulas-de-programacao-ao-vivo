@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gerar Cores</title>
+    <meta charset="UTF-8"/>
+    <style>
+      #botao-gerar-cor {
+        color: white;
+        background-color: #2e2e2e;
+        padding: 10px 50px;
+        border: 5px solid red;
+        cursor: pointer;
+        transition: 1000ms;
+        font-weight: bold;
+        border-radius: 25px;
+      }
+      #botao-gerar-cor:hover {
+        background-color: red;
+      }
+      #cor {
+        width: 150px;
+        height: 150px;
+        margin-top: 15px;
+        background-color: #DDDDDD;
+        text-align: center;
+      } 
+    </style>
+  </head>
+  <body>
+    <button id="botao-gerar-cor">Gerar COR</button>
+    <div id="cor">COR</div>
+    <script type="text/javascript">
+      function gerarCor() {
+        //os valores de rgb vão entre 0-255 para cada um rgb(0-255,0-255,0-255);
+        document.querySelector("#cor").style.backgroundColor = "rgb(255, 0, 0)";
+      }
+      document.querySelector("#botao-gerar-cor").addEventListener('click', gerarCor);
+    </script>
+  </body>
+</html>

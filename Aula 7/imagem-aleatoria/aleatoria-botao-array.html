@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Imagem Aleatorio</title>
+    <meta charset="UTF-8"/> 
+  </head>
+  <body>
+    <button id="mudar-imagen">Mudar Imagem</button>
+    <script type="text/javascript">
+
+      let listaImagens = [
+        "https://i.pinimg.com/736x/21/18/54/2118543235117ee07b6301814c774a33.jpg",
+        "https://capricho.abril.com.br/wp-content/uploads/2015/08/gatinho.jpg?quality=85&strip=info&w=620&resize=1200,800",
+        "https://i.pinimg.com/originals/16/22/73/16227372b045d00d5f5d7ce78fbbf5a1.jpg",
+        "https://i.pinimg.com/236x/6b/4d/68/6b4d6812a791397c090fc3c5800178e1.jpg",
+        "https://i.pinimg.com/236x/8b/fa/d4/8bfad497bd4f0714ff43e7f1c582c1f7.jpg",
+        "https://i.pinimg.com/236x/f5/dd/c6/f5ddc690ab0783246299f9045bb2dec4.jpg",
+      ];
+
+      function gerarNumeroAleatorio(min, max) {
+        return Math.floor(Math.random() * (max));
+      }
+
+      function mudarImagem() {
+        let imagem = gerarNumeroAleatorio(0, listaImagens.length);
+        document.body.style.backgroundImage = 'url(' + listaImagens[imagem] + ')';
+      }
+
+
+      document.querySelector("#mudar-imagen").addEventListener('click', mudarImagem);
+    </script>
+  </body>
+</html>

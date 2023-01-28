@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contador - Aula</title>
+  </head>
+  <body>
+    <h1>Contador</h1>
+    <span id="valor-contador-1" style="color: rgb(255, 44, 167)">0</span>
+    <button id="button-contador-1">+1</button>
+    <button id="button-contador--1">-1</button>
+    <button id="button-contador-10">+10</button>
+    <button id="button-contador--10">-10</button>
+    <button id="button-contador-100">+100</button>   
+    <button id="button-contador--100">-100</button>
+    <h3 id="valor-contador" style="color: rgb(16, 235, 8);"></h3>
+    <button id="button-contador">Gerar Número</button>
+    <script type="text/javascript">
+        let contador = 0;
+        let numero = 0;
+        function buttonClicado1() {
+          contador += 1;
+          document.querySelector("#valor-contador-1").innerText = contador;
+        }
+        function buttonClicado2() {
+          contador -= 1;
+          document.querySelector("#valor-contador-1").innerText = contador;
+        }
+        function buttonClicado3() {
+          contador += 10;
+          document.querySelector("#valor-contador-1").innerText = contador;
+          }
+        function buttonClicado4() {
+          contador -= 10;
+          document.querySelector("#valor-contador-1").innerText = contador;
+          }
+        function buttonClicado5() {
+          contador += 100;
+          document.querySelector("#valor-contador-1").innerText = contador;
+          }
+        function buttonClicado6() {
+          contador -= 100;
+          document.querySelector("#valor-contador-1").innerText = contador;   
+        }
+        function gerarNumeroAleatorio(min, max) {
+          return Math.floor(Math.random() * (max));
+        }
+        function buttonGerar() {
+          numero = gerarNumeroAleatorio(0, contador);
+          if (numero >= 0){
+            document.querySelector("#valor-contador").innerText = numero; 
+          } else {
+           alert("Não é possível gerar um número"); 
+          }
+
+          }
+        document.querySelector("#button-contador-1").onclick = buttonClicado1; 
+        document.querySelector("#button-contador--1").onclick = buttonClicado2; 
+        document.querySelector("#button-contador-10").onclick = buttonClicado3;
+        document.querySelector("#button-contador--10").onclick = buttonClicado4;
+        document.querySelector("#button-contador-100").onclick = buttonClicado5;
+        document.querySelector("#button-contador--100").onclick = buttonClicado6;
+        document.querySelector("#button-contador").onclick = buttonGerar;
+    </script>
+  </body>
+</html>

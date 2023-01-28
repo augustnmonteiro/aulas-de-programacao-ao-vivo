@@ -1,0 +1,70 @@
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contador - Números</title>
+  </head>
+  <body>
+        <h1>Contador de números inteiros Ex 4</h1>
+        <span id="valor-contador-1" style="color: purple;background-color: aquamarine;">0</span>
+        <button id="button-contador-1">+1</button>
+        <br><button id="button-contador-2">+10</button>
+        <br><button id="button-contador-3">+100</button>
+        <br><button id="button-contador-4">-1</button>
+        <br><button id="button-contador-5">-10</button>
+        <br><button id="button-contador-6">-100</button>
+        <br>
+        <br>
+        <span id="gerar-numero-aleatorio" style="color: pink; background-color: black;">0</span>
+        <button id="button-gerar">Gerar numero aleatorio</button>
+        <br>
+        <br>
+        <script type="text/javascript">
+
+            let contador1 = 0;
+            function buttonClicado1() {
+                    contador1+= 1;
+                document.querySelector("#valor-contador-1").innerText = contador1;
+                 }
+            document.querySelector("#button-contador-1").onclick = buttonClicado1;
+            function buttonClicado2() {
+                    contador1+= 10;
+                document.querySelector("#valor-contador-1").innerText = contador1;
+                 }
+            document.querySelector("#button-contador-2").onclick = buttonClicado2;
+
+            function buttonClicado3() {
+                    contador1+= 100;
+                document.querySelector("#valor-contador-1").innerText = contador1;
+                 }
+            document.querySelector("#button-contador-3").onclick = buttonClicado3;
+
+            function buttonClicado4() {
+                    contador1-= 1;
+                document.querySelector("#valor-contador-1").innerText = contador1;
+                 }
+            document.querySelector("#button-contador-4").onclick = buttonClicado4;
+            function buttonClicado5() {
+                    contador1-= 10;
+                document.querySelector("#valor-contador-1").innerText = contador1;
+                 }
+            document.querySelector("#button-contador-5").onclick = buttonClicado5;
+
+            function buttonClicado6() {
+                    contador1-= 100;
+                document.querySelector("#valor-contador-1").innerText = contador1;
+                 }
+            document.querySelector("#button-contador-6").onclick = buttonClicado6;
+
+
+            function gerarNumeroAleatorio() {
+              let numero = Math.floor(Math.abs(Math.random() * (0, contador1)));
+              document.querySelector("#gerar-numero-aleatorio").innerText = numero;
+            }
+            document.querySelector("#button-gerar").onclick = gerarNumeroAleatorio;
+
+    </script>
+  </body>
+</html>

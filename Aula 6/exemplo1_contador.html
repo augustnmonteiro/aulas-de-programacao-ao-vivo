@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contador - Aula</title>
+</head>
+
+<body>
+
+    <h1>Contador (Ex 1)</h1>
+    <span id="valor_contador_1" style="color: red;">0</span>
+    <button onclick=buttonClicado(0)>+1</button>
+    <button onclick=buttonClicado(1)>-1</button>
+    <button onclick=buttonClicado(2)>+10</button>
+    <button onclick=buttonClicado(3)>-10</button>
+    <button onclick=buttonClicado(4)>+100</button>
+    <button onclick=buttonClicado(5)>-100</button>
+    <h1></h1>
+    <span id="valor_aleatorio" style="color: blue;">0</span>
+    <button onclick=clickAleatorio() id="button_aleatorio">Numero Aleatorio</button>
+    <script type="text/javascript">
+        let contador = 0;
+
+        function buttonClicado(valor) {
+
+            switch (valor) {
+                case 0:
+                    contador++;
+                    break;
+                case 1:
+                    contador--;
+                    break;
+                case 2:
+                    contador = contador + 10;
+                    break;
+                case 3:
+                    contador = contador - 10;
+                    break;
+                case 4:
+                    contador = contador + 100;
+                    break;
+                case 5:
+                    contador = contador - 100;
+                    break;
+
+            }
+
+            document.querySelector("#valor_contador_1").innerText = contador;
+        }
+
+        function clickAleatorio() {
+            document.querySelector("#valor_aleatorio").innerText = Math.floor(Math.abs(Math.random() * (contador - 0)))
+        }
+
+    </script>
+</body>
+
+</html>

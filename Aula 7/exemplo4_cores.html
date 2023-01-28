@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gerador de Cores</title>
+        <meta charset="UTF-8"/>
+        <style>
+            body{
+                background-color: rgb(119, 117, 117);
+            }
+            #titulo{
+                text-align: center; 
+                font-family: Verdana, sans-serif; 
+                color: rgb(255, 255, 255); 
+                margin-top: 165px;
+            }
+            #gerar-cores{
+                width: 150px;
+                margin: 0 auto;
+            }
+            #botao-gerar-cores{
+                color: rgb(0, 0, 0);
+                background-color: rgb(255, 255, 255);
+                padding: 10px 35px;
+                border: 0px;
+                border-radius: 20px;
+                cursor: pointer;
+                transition: 200ms;
+                font-weight: bold;
+                font-family: Verdana, sans-serif;
+                margin-top: 5px;
+                
+            }
+            #botao-gerar-cores:hover{
+                background-color: rgb(54, 198, 235);
+            }
+            
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+                margin-top: 10px;
+                color: rgb(0, 0, 0);
+                background-color: rgb(255, 255, 255);
+                border: 0px;
+                border-radius: 20px;
+                font-weight: bold;
+                font-family: Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="titulo">GERAR CORES</h1>
+        <div id="gerar-cores"><button id="botao-gerar-cores">Clique Aqui</button></div>
+        <div id="cor" class="container">Cor</div>
+
+    <script type="text/javascript">
+        function generateColor() {
+            let r = parseInt(Math.random() * 255);
+            let g = parseInt(Math.random() * 255);
+            let b = parseInt(Math.random() * 255);
+            let cor = `rgb(${r},${g},${b})`;
+  
+            document.querySelector("#cor").style.backgroundColor = cor; 
+            console.log (cor);
+        }
+        document.querySelector("#gerar-cores").addEventListener('click', generateColor);
+    </script>
+    </body>
+</html>

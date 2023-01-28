@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Gerador de Cores</title>
+        <meta charset="UFT-8"/>
+        <style>
+            #botao-gerar-estilos{
+                color: rgb(0, 0, 0);
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                background-color: rgb(17, 170, 137);
+                transition: 100ms;
+                font-weight: bold;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            #botao-gerar-Cor{
+                background-color: rgb(48, 129, 55);
+            }
+            #cor {
+                width: 300px;
+                height: 50px;
+                margin-top: 15px;
+                background-color: rgb(41, 117, 187);
+            }   
+         </style>
+    </head>
+    <body>
+            <button id="botao-gerar-estilos">Gerar Cor</button>
+            <div id="cor">COR</div>
+            <script type="text/javascript">
+                
+                function gerarCores() { 
+                    let red = Math.floor(Math.random() * (255 - 0) + 0);
+                    let green = Math.floor(Math.random() * (255 - 0) + 0);
+                    let blue = Math.floor(Math.random() * (255 - 0) + 0);
+
+                    let cor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+
+                    document.querySelector("#cor").style.backgroundColor = cor
+                }
+                document.querySelector("#botao-gerar-estilos").addEventListener('click', gerarCores)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gerar Cores</title>
+    <meta charset="UTF-8" />
+    <style>
+        #botao-gerar-cor {
+            background-color: transparent;
+            padding: 10px 40px;
+            border: 1px solid rgb(62, 196, 219);
+            cursor: pointer;
+            transition: 1000ms;
+            font-weight: bold;
+            border-radius: 20px;
+
+        }
+        @keyframes anima{
+            0%{
+                transform: scale(1);
+            }
+            100%{
+                transform: scale(1.05);
+            }
+        }
+        button:hover{
+            box-shadow: 0 0 15px rgb(62, 196, 219), inset 0 0 15px rgb(62, 196, 219);
+            text-shadow: 0 0 15px rgb(62, 196, 219);
+            animation-name: anima;
+            animation-duration: 0.5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        #cor {
+            color: rgb(0, 0, 0);
+            width: 150px;
+            height: 50px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 65px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="botao-gerar-cor">Gerar COR</button>
+    <div id="cor"><br>COR GERADA</div>
+    <script>
+        function GerarCor() {
+            //os valores de RGB vao de 0-255 para cada um RGB(0-255 , 0-255, 0-255)
+            let v1 = Math.floor(Math.abs(Math.random() * (255 - 0)));
+            let v2 = Math.floor(Math.abs(Math.random() * (255 - 0)));
+            let v3 = Math.floor(Math.abs(Math.random() * (255 - 0)));
+            document.querySelector("#cor").style.backgroundColor = 'rgb(' + v1 + ',' + v2 + ',' + v3 + ')';
+        }
+        document.querySelector("#botao-gerar-cor").addEventListener('click', GerarCor);
+    </script>
+</body>
+
+</html>
