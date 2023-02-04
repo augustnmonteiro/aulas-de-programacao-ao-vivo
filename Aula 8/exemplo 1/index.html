@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8"/>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                color: white;
+                font-family: sans-serif;
+            }
+            body{
+                background-color: #111111;
+            }
+            .icone-perfil{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+                margin: 40px auto;
+                gap: 20px;
+            }
+            .icone-perfil img{
+                width: 150px;
+                height: 150px;
+                border: solid 1px rgb(219, 186, 0);
+                border-radius: 50%;
+            }
+            .link-bio{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+                margin: 40px auto;
+                gap: 20px;
+            }
+            .link-bio img{
+                display: flex;
+                justify-content: right;
+                width: 50px;
+                height: 50px;
+                margin-right: 1%;
+                border: solid 1px rgb(219, 186, 0);
+                border-radius: 50%;
+            }
+            .link-bio h1{
+                font-size: 30px;
+                margin-top: -2%;
+            }
+            .link-bio h4{
+                font-size: 17px;
+                font-weight: normal;
+                margin-top: -1%;
+            }
+            .link-bio a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(219, 186, 0);
+                color: white;
+                padding: 5px;
+                width: 50%;
+                text-decoration: none;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 15px;
+                font-weight: bold;
+                border: solid 2px rgb(219, 186, 0);
+                border-radius: 10px;
+            }
+            .link-bio a:hover{
+                background-color: #111111;
+                color: rgb(219, 186, 0);
+                transition: 500ms;
+            }
+        </style>
+        <script type="text/javascript">
+            let imagens = [
+                "1.png",
+                "2.png",
+                "3.png",
+                "4.png"
+            ]
+            let img_atual = 0;
+            function trocarFotoDoPerfil(){
+                if(img_atual < (imagens.length - 1)){
+                    img_atual += 1;
+                } else {
+                    img_atual = 0;
+                }
+                document.querySelector("#icone_do_perfil").src = "imagens/" + imagens[img_atual];
+                let x = setTimeout(trocarFotoDoPerfil, 1000);
+            }
+            
+        </script>
+    </head>
+    <body onload="trocarFotoDoPerfil()">
+        <div class="icone-perfil">
+            <img src="imagens/1.png" id="icone_do_perfil">
+        </div>
+        <div class="link-bio">
+            <h1>David de Freitas</h1>
+            <h4>Estudante de Programação e Análise de Testes</h4>
+            <a href="https://github.com/DavidFreitas0">
+                <img src="imagens/logo-gh.png"/>Acesse o meu GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/david-freitas-6275a9257/">
+                <img src="imagens/logo-link.png"/>Acesse o meu LinkedIn
+            </a>
+            <a href="https://www.youtube.com/channel/UCOOcHVtngkkT0ncWMUGgf-A">
+                <img src="imagens/logo-yt.png"/>Acesse o meu YouTube
+            </a>           
+            <a href="https://www.instagram.com/davidfreitas0/">
+                <img src="imagens/logo-insta.png"/>Acesse o meu Instagram
+            </a>
+        </div>
+    </body>
+</html>

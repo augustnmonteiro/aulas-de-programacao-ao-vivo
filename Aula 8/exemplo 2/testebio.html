@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Links para bio</title>
+        <meta charset="UTF-8"/>
+        <style>
+             body {
+                background-color: rgb(247, 117, 139);
+                align-items: center;
+            }
+             .imagens-quadradas {
+                width: 70px;
+                align-items: center;
+                display: flex;
+            }
+            .imagens-quadradas:hover {
+                width: 120px;
+                height: 120px;
+            }
+            .imagens-de-perfil0 {
+                width: 100px;
+            }
+           
+        </style>
+
+    </head>
+    <body>
+        <img class="imagens-de-perfil0" id="foto-perfil" src="./1.jpg"/>
+        <p id="nome">Vanessa Rodrigues</p>
+        <p id="descrição">Estudante de programação e graduanda em Tecnologia em Alimentos.</p>
+        <a href= "https://www.facebook.com/profile.php?id=100007869077299&mibextid=ZbWKwL">
+            <img class="imagens-quadradas" src="./fb.png"/> 
+        </a> 
+        <a href="https://instagram.com/vanessaa.rodriigues?igshid=NTdlMDg3MTY=">
+            <img class="imagens-quadradas" src="./insta.webp"/> 
+        </a>
+        <a href="https://t.me/vanessarodl">
+            <img class="imagens-quadradas" src="./telegam.png"/> 
+        </a>
+        <a href="https://www.tiktok.com/@vanessarodrigues875?_t=8ZRJbPqIrOH&_r=1">
+            <img class="imagens-quadradas" src="./tiktok.png"/> 
+        </a> 
+        <script type="text/javascript"> 
+        
+            function randomImage(){
+                let imagensPerfil=["./0.jpg","./1.jpg"];
+                let index = Math.floor(Math.random() * imagensPerfil.length);
+            
+                document.getElementById("foto-perfil").src = imagensPerfil[index];
+            }
+            randomImage();
+            setInterval(randomImage, 1000);
+
+        </script>
+    
+    </body>
+    
+</html>

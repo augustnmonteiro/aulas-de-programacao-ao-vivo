@@ -1,0 +1,159 @@
+<!--
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Desafio</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Desafio</h1>
+        <p>Criar html(pagina) para ser o link com todas as redes sociais</p>
+        <p><strong>Requerimentos:</strong></p>
+        <ol>
+            <li>Ter fotos dos logos das redes sociais</li>
+            <li>quando clicar no logo enviar para a rede social</li>
+            <li>Ter foto de perfil</li>
+            <li>Foto de perfil deve ficar mudando aleatoriamente a cada 1s</li>
+            <li>Deve ter o nome da pessoa</li>
+            <li>Deve ter uma descrição</li>
+        </ol>
+    </body>
+    
+    </html-->
+    
+    <!DOCTYPE html>
+    <html>
+    
+    <head>
+        <meta charset="UTF-8" />
+        <title>Redes Sociais</title>
+        <style>
+            .circle-image {
+                height: 250px;
+                width: 250px;
+                object-fit: cover;
+                border: 1px solid rgb(255, 255, 255);
+                border-radius: 50%;
+                box-shadow: 0 0 15px rgb(62, 196, 219);
+                /* desfocar imagem para não comprometer kkkkk*/
+                /* filter: blur(3px); */
+            }
+            
+            #usuario {
+                background-color: transparent;
+                padding: 10px 76px;
+                border: 1px solid rgb(62, 196, 219);
+                border-radius: 20px;
+                text-align: center;
+                width: 100px;
+                box-shadow: 0 0 15px rgb(62, 196, 219);
+                
+            }
+            
+            .click {
+                cursor: pointer;
+            }
+            
+            .efeito {
+                border-radius: 40px;
+                box-shadow: 0 0 15px rgb(62, 196, 219);
+            }
+            
+            .margin {
+                margin-top: 10px;
+            }
+            
+            #slider {
+                width: 80%;
+                height: 250px;
+                display: flex;
+                flex-direction: column;
+                
+            }
+            
+            #slider img {
+                opacity: 0;
+                left: 225px;
+                top: 8px;
+                object-fit: cover;
+                position: absolute;
+                transition: opacity 800ms;
+            }
+            
+            @media(min-width:800px) {
+                #slider img {
+                    left: 550px;
+                }
+            }
+            
+            #slider img.selected {
+                opacity: 1;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="slider">
+            <img class="circle-image selected" src="./img/1.jpeg">
+            <img class="circle-image" src="./img/2.jpeg">
+            <img class="circle-image" src="./img/3.jpeg">
+            <img class="circle-image" src="./img/4.jpeg">
+        </div>
+        
+        <script type="text/javascript">
+            const TIME_TO_CHANGE_PICTURE = 1000;
+            let currentImageIndex = 0,
+            images = document.querySelectorAll("#slider img");
+            
+            function nextImage() {
+                
+                images[currentImageIndex]
+                .classList.remove("selected")
+                
+                currentImageIndex++;
+                
+                if (currentImageIndex >= images.length)
+                currentImageIndex = 0
+                
+                images[currentImageIndex]
+                .classList.add("selected");
+            }
+            
+            function start() {
+                setInterval(() => {
+                    // troca de image
+                    nextImage()
+                }, TIME_TO_CHANGE_PICTURE)
+            }
+            
+            window.addEventListener("load", start)
+        </script>
+        
+        
+        
+        <center>
+            <div id="sociais">
+                <p id="usuario"><strong>@Hugo.silva777</strong></p>
+                <p>click na imagem abaixo para ser redirecionado a rede social</p>
+                
+                <a href="https://www.facebook.com/profile.php?id=100005303778794" target="_blank">
+                    <img class="facebook click efeito margin" src="./img/facebook.png">
+                <a />
+                <a href="https://www.instagram.com/hugo.silva777/" target="_blank">
+                    <img class="instagram click efeito margin" src="./img/botaoInstagram-removebg-preview.png"><br>
+                <a />
+            <!-- VAI PRA TELA DE LOGIN POIS NAO TENHO TWITTER -->
+                <a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoicHQifQ%3D%3D%22%7D"
+                target="_blank">
+                    <img class="twiter click efeito margin" src="./img/botaotwiter-removebg-preview.png">
+                <a />
+            <!-- VAI PRA TELA DE INICIAL POIS NAO TENHO TIKTOK -->
+                <a href="https://www.tiktok.com/" target="_blank">
+                    <img class="tiktok click efeito margin" src="./img/botaoTikTok-removebg-preview.png">
+                <a />
+            </div>
+        </center>
+                    
+                </body>
+                
+                </html>

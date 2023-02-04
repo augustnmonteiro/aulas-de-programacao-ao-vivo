@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Atendimento Consultorio</title>
+        <meta charset="UTF-8">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                color: rgb(0, 0, 0);
+                font-family: sans-serif;
+            }
+            body{
+                background-color: lavender;
+            }
+            .titulo {
+                display: flex;
+                justify-content: center;
+                margin: 0 auto;
+                margin-top: 4%;
+                margin-bottom: 1%;
+            }
+            .container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+            } 
+            #data {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                margin-top: 2%;
+            } 
+            #hora {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+            }
+            .botoes {
+                margin-top: 2%;
+            }
+            .botoes button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                margin-top: 3px;
+                padding: 3px;
+                height: 30%;
+                width: 20%;
+                border: 1px solid;
+                border-radius: 20px;
+                background-color: cornflowerblue;
+                color: white;
+            }
+            .informacoes {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+            }
+            .nome {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                font-size: 25px;
+                font-weight: bold;
+            }
+            .consultorio{
+                display: flex;
+                align-items: center;
+                justify-content: center; 
+                margin: 0 auto;
+                margin-bottom: -1%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="titulo"><h1>Chamar Paciente</h1></div>
+        <!-- <div class="informacoes"> -->
+        <div class="nome"><span id="nome-do-paciente">------</span></div>
+        </br>
+        <div class="consultorio"><span id="consultorio">Começe o atendimento chamando um paciente</span></div>
+        <!-- </div> -->
+        <div class="botoes">
+            <button id="chamar">Chamar Paciente</button>
+        </div>
+        <!-- Data e Hora Atual -->
+            <div id="data"><span id="hora-atual"></span></div>
+            <div id="hora"><span id="data-atual"></span></div>
+
+        <script type="text/javascript">
+            // Variaveis
+            let pacientes = [
+                ["Chico", "Prioridade"],
+                ["Zé", "Prioridade"],
+                ["Maria", "Prioridade"],
+                ["Laura", "Não Prioridade"],
+                ["Marcos", "Não Prioridade"],
+                ["Samilly", "Não Prioridade"]
+            ];
+            let prioridade = [];
+            let naoPrioridade = [];
+            let ultimoTipoDePacienteChamado = "NAOPRIORIDADE";
+
+            // Funções
+            function tocarSom(){
+                var audio1 = new Audio();
+                audio1.src = "./1.mp3";
+                // audio1.play();
+            }
+            function falar(texto){
+                let frase = new SpeechSynthesisUtterance(texto);
+                frase.voice = window.speechSynthesis.getVoices().filter(v => v.lang == "pt-BR")[9];
+                frase.rate = 0.8;
+                frase.lang = "pt-BR";
+                // window.speechSynthesis.speak(frase);
+ 
+            }
+            function separarPrioridade(){
+                for(let i=0; i<pacientes.length; i++){
+                    if (pacientes[i][1] == "Prioridade") {
+                        prioridade.push(pacientes[i]);
+                    } else if (pacientes[i][1] == "Não Prioridade") {
+                        naoPrioridade.push(pacientes[i]);
+                    }
+                }
+            }
+            separarPrioridade();
+            function chamar() {
+                tocarSom();
+                let separarArray = [];
+                let nome;
+                if (ultimoTipoDePacienteChamado == "PRIORIDADE") {
+                    separarArray = naoPrioridade.shift();
+                    ultimoTipoDePacienteChamado = "NAOPRIORIDADE";
+                } else {
+                    separarArray = prioridade.shift();
+                    ultimoTipoDePacienteChamado = "PRIORIDADE";
+                }
+
+                if (separarArray) {
+                    nome = separarArray[0];
+                    document.querySelector("#nome-do-paciente").innerText = nome;
+                    document.querySelector("#consultorio").innerText = "Por favor, Comparecer ao Consultório 1";
+                    falar("Por favor, Comparecer ao Consultório 1");
+                }
+            }
+            function dataEhora(){
+                let momentoAtual = new Date();
+
+                let hora = momentoAtual.getHours();
+                let minuto = momentoAtual.getMinutes();
+                let segundo = momentoAtual.getSeconds();
+
+                let dia = momentoAtual.getDate();
+                let mes = momentoAtual.getMonth();
+                let ano = momentoAtual.getFullYear();
+
+                if (dia < 10){ 
+                    dia = "0" + dia;
+                }
+			    if (mes < 10){ 
+                    mes = "0" + mes;
+                }
+			    if (hora < 10){ 
+                    hora = "0" + hora;
+                }
+			    if (minuto < 10){ 
+                    minuto = "0" + minuto;
+                }
+			    if (segundo < 10){ 
+                    segundo = "0" + segundo;
+                }
+
+                dataFormat = dia + " / " + mes + " / " + ano;
+			    horaFormat = hora + " : " + minuto + " : " + segundo;
+
+                document.getElementById("data-atual").innerHTML = dataFormat;
+			    document.getElementById("hora-atual").innerHTML = horaFormat;
+
+                setTimeout("dataEhora()",1000);
+            }
+            dataEhora();
+            document.querySelector("#chamar").addEventListener("click", chamar);
+        </script>
+    </body>
+</html>

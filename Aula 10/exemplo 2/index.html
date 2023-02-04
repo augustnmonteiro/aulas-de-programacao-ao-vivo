@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: rgb(206, 202, 197);
+        }
+        h1 {
+            font: normal 20pt arial;
+            margin: 10px 0;
+            color: red;
+        }
+        h2, h3 {
+            font-family: sans-serif;
+        }
+        
+        #container {
+            width: 700px;
+            height: 500px;
+            margin: auto auto;
+            background-color: rgb(206, 202, 197);
+        }
+        #tela {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        #tela-paciente {
+            width: 420px;
+            background-color: rgb(248, 246, 246);
+            margin-top: 10px;
+            text-align: center;
+            padding-top: 15%;
+        }
+        .alerta {
+            height: 150px;
+            background-color: aliceblue;
+            margin-top: 10px;
+            width: 270px;
+            text-align: center;
+            padding-top: 20px;
+        }
+        p {
+            font: normal 10pt arial;
+            margin-top: 20px;
+            padding: 5px;
+            line-height: 20px;
+            font-size: 15px;
+        }
+        #hr {
+            padding: 50px;
+            font-size: 20px;
+            color: blue;
+        }
+
+        .chamada {
+            height: 180px;
+            text-align: center;
+        }
+    </style>
+</head>
+    
+<body  onload="chamar()">
+    <div id="container">
+        <div id="tela">
+            <div id="tela-info">
+                <div class="alerta">
+                    <h2 style="color: rgb(245, 50, 50);">Emergência:</h2>
+                    <p>Pacientes que receberam a pulseira vermelha vão para a sala de emergência.</p>
+                </div>
+                <div class="alerta">
+                    <h2 style="color:rgb(167, 122, 10);">Urgência:</h2>
+                    <p>Pacientes que receberam a pulseira amarela vão para a sala de urgência.</p>
+                </div>
+                <div class="alerta">
+                    <h1>Fique atento</h1>
+                    <p>Atenção pacientes, Fiquem atentos na sua vez para não atrazar os atendimentos.</p>
+                </div>
+            </div>
+            <div id="tela-paciente">
+                <div class="chamada">
+                    <h2>Paciente:</h2>
+                    <h1 id="nome"></h1>
+                    <h3>Por favor dirija-se ao:</h3>
+                    <h1>consultório 1.</h1>
+                </div>
+                    <span id="hr"><h2>Horário: </h2></span>
+                <div class="chamada">
+                    
+                    <h2 style="margin-top: 10px;">Paciente:</h2>
+                    <h1 id="urgencia" style="color: rgb(167, 122, 10);">Nome da pessoa</h1>
+                    <h3 style="margin-top: 10px;">Por favor dirija-se ao:</h3>
+                    <h1 style="color: chocolate;">consultório 2.</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let prioridade = ["João Almeida", "André Martinz", "Maria Raimunda"]
+        let urgencia = ["Marcos Silva", "Carlos Senna", "Agnaldo timotio", "Chico"]
+        let data = new Date();
+        let horas = data.getHours()
+        let minut = data.getMinutes()
+
+        let hours = document.getElementById('hr')
+        
+        let pacienteatual = 0;
+        function chamar() {
+            if (pacienteatual >= prioridade.length && pacienteatual >= urgencia.length) {
+                document.querySelector('#mostrador').innerHTML = `Todas as pessoas foram chamada.`
+            } else {
+                hours.innerHTML = `Horário: ${horas}:${minut}`
+                document.querySelector('#nome').innerHTML = `Emergência: ${prioridade[pacienteatual]}`
+                document.querySelector('#urgencia').innerHTML = `Urgência: ${urgencia[pacienteatual]}`
+                //let voz = new SpeechSynthesisUtterance("Atenção pacientes!" + prioridade[pacienteatual] + " Dirija-se ao consultório 1," + urgencia[pacienteatual] + "Dirija-se ao consultório 2");
+                //window.speechSynthesis.speak(voz)
+                pacienteatual++
+                
+            }
+        }
+    //    setInterval(chamar, 10000)
+    </script>
+</body>
+
+</html>

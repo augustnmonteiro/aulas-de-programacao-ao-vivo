@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Perfil</title>
+    <meta charset="UTF-8"/> 
+    <style>
+      .imagem-perfil {
+        width: 350px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 40px auto;
+        gap: 20px;
+      }
+      .links img{
+        width: 50px;
+        height: 50px;       
+      }
+      .links{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <img class = "imagem-perfil" id = "perfil" src="./0.jpeg"/>
+    <div class="links">
+        <h2> Redes Sociais Ivina Karol: </h2>
+        <a href="https://www.instagram.com/ivinakarol/">
+          <img src="https://www.ifmg.edu.br/portal/ensino/bibliotecas/Instagran.jpg/@@images/image.png"/>
+        </a>
+        <a href="https://www.youtube.com/watch?v=svAc1kBlzSw">
+          <img src="https://logodownload.org/wp-content/uploads/2014/10/youtube-logo-5-2.png"/>
+        </a>
+        <a href="https://pt-br.facebook.com/">
+          <img src="https://www.facebook.com/images/fb_icon_325x325.png"/>
+        </a>
+        <a href="https://www.tiktok.com/pt-BR/">
+          <img src="https://seeklogo.com//images/T/tiktok-app-icon-logo-0F5AD7AE01-seeklogo.com.png"/>
+        </a>
+    </div>
+  
+    <script type="text/javascript">
+        function mudarfotoPerfil(){
+          let fotoPerfil =["./0.jpeg", "./1.jpeg", "./2.jpeg", "./3.jpeg"];
+          let index = Math.floor(Math.random() * fotoPerfil.length);
+          document.getElementById("perfil").src = fotoPerfil[index];
+        }
+        mudarfotoPerfil();
+        setInterval(mudarfotoPerfil, 1000);
+         
+    </script>
+   
+  </body>
+</html>

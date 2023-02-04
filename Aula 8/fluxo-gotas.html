@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Fluxo Gotas</title>
+    <style>
+      #gota {
+        display: table;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="resultado">
+      <h1>Gotas por Minuto</h1>
+      <h3 id="gttsPorMin"></h1>
+      <h1>ml por Minuto</h1>
+      <h3 id="mlPorMin"></h1>
+    </div>
+    <button id="gota">GOTA</button>
+    <script type="text/javascript">
+      let gotasTimestamp = [];
+      let deltas = [];
+      let mediaTempoGota = 0;
+      let mlPorMin = 0;
+      let gttsPorMin = 0;
+      let total = 0;
+
+      function gota() {
+        if (gotasTimestamp.length == 3) {
+          calcularDeltas();
+          calcularValores();
+          gotasTimestamp = [];
+          deltas = [];
+          mediaTempoGota = 0;
+          mlPorMin = 0;
+          gttsPorMin = 0;
+          total = 0;
+        } else {
+          gotasTimestamp.push(+new Date());
+        }
+      }
+      function calcularDeltas() {
+        for (let i=1; i<gotasTimestamp.length; i++) {
+          deltas.push(gotasTimestamp[i] - gotasTimestamp[i - 1]);
+        }
+        for (let i=0; i<deltas.length; i++) {
+          total += deltas[i];
+        }
+        mediaTempoGota = total / deltas.length;
+      }
+      function calcularValores() {
+        // 1 gota = 0,05ml
+        // mediaTempoGota = ms t que a gota leva para cair
+        let gotasPorMin = Math.floor((60 * 1000) / mediaTempoGota);
+        mlPorMin = gotasPorMin * 0.05;
+        gttsPorMin = gotasPorMin;
+        document.querySelector("#gttsPorMin").innerText = gotasPorMin;
+        document.querySelector("#mlPorMin").innerText = mlPorMin;
+        console.log("Gotas por Minuto: ", gotasPorMin);
+        console.log("MlPorMin: ", mlPorMin);
+      }
+      document.querySelector("#gota").addEventListener("click", gota);
+    </script>
+  </body>
+</html>
