@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+
+#samples {
+  display: table;
+  margin: 0 auto;
+  max-width: 440px;
+}
+
+button {
+  background: #CCC;
+  border: 1px solid #333;
+  width: 200px;
+  height: 70px;
+  margin: 10px;
+}
