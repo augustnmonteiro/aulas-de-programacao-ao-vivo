@@ -1,8 +1,13 @@
 const http = require("http");
 const url = require("url");
 
-const { listTodos, addTodo, updateTodo, deleteTodo } = require("./todos-route");
+/**
+ * Desafio
+ * Quando o usuario deletar algum TODO, não remover o TODO do Array. (Deletar de forma lógica)
+ * *** Lembrar da função de editar, o usuario não deve conseguir editar um TODO que já foi deletado
+ */
 
+const { listTodos, addTodo, updateTodo, deleteTodo } = require("./todos-route");
 
 function processRequest(request, response){
 
