@@ -7,9 +7,15 @@ const url = require("url");
  * *** Lembrar da função de editar, o usuario não deve conseguir editar um TODO que já foi deletado
  */
 
+/**
+ * Problemas encontrados:
+ *  -> Está travando a request (carregando infinitamente) de editar o todo quando o mesmo foi deletado
+ */
+
 const { listTodos, addTodo, updateTodo, deleteTodo } = require("./todos-route");
 
 function processRequest(request, response){
+
     const reqUrl = url.parse(request.url, true);
     if (reqUrl.pathname == "/todo"){
         switch(request.method){
@@ -28,6 +34,5 @@ function processRequest(request, response){
         }
     }
 }
-
 const server = http.createServer(processRequest);
 server.listen(3000);
