@@ -1,15 +1,6 @@
 const http = require("http");
 const url = require("url");
 
-/**
- * Desafio:
- * -> Fazer função para adicionar category
- * -> Fazer função para listar category
- * ---------- Se sobrar tempo -----------------
- * -> Na função de adicionar todo, não permitir todo sem categoryId
- * -> Na função de editar todo, não permitir remover categoryId (**Usuario pode mudar a categoria mas não pode remover)
- */
-
 let todos = [
   {id: 1, title: "Fazer feira", description: "Laranjas, Arroz, Carne", categoryId: 1},
 ];
@@ -27,7 +18,7 @@ setupCurrentIdCategories(categories);
 function processRequest(request, response){
 
     const reqUrl = url.parse(request.url, true);
-    if (reqUrl.pathname == "/todo") {
+    if (reqUrl.pathname == "/todo"){
         switch(request.method) {
             case "GET":
               listTodos(request, response, reqUrl, todos, categories);
