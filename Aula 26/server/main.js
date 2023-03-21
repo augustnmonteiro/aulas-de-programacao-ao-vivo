@@ -4,6 +4,12 @@ const mysql = require("mysql2");
 const fs = require("fs");
 const path = require("path");
 
+/**
+ * Desafio
+ * - No POST do todo usar mysql
+ * - No GET do category user mysql
+ */
+
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -72,6 +78,7 @@ function processRequest(request, response){
               listTodos(request, response, reqUrl, connection);
               break;
             case "POST":
+              //INSER INTO
               addTodo(request, response, reqUrl, todos, categories, writeTODOtoFile);
               break;
             case "PUT":
