@@ -1,12 +1,30 @@
 const http = require("http");
 const url = require("url");
-
+const mysql = require("mysql2");
 const fs = require("fs");
 const path = require("path");
+
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "listra"
+});
+
+connection.query("SELECT 1", (error, result) => {
+  if (error) {
+    console.log("Error ao conectar com o banco de dados!", error);
+  } else {
+    console.log("Banco de dados conectado com sucesso!");
+  }
+});
 
 const options = {
   encoding: "utf-8"
 };
+
+const { listTodos, addTodo, updateTodo, deleteTodo, setupCurrentIdTodos } = require("./routes/todos");
+const { listCategories, addCategory, updateCategory, deleteCategory, setupCurrentIdCategories } = require("./routes/category");
 
 let todos = [];
 let categories = [];
@@ -14,6 +32,7 @@ let categories = [];
 fs.readFile(path.join("db", "category.json"), options, (error, data) => {
   if (!error){
     categories = JSON.parse(data);
+    setupCurrentIdCategories(categories);
   } else {
     console.error(error);
   }
@@ -22,6 +41,7 @@ fs.readFile(path.join("db", "category.json"), options, (error, data) => {
 fs.readFile(path.join("db", "todo.json"), options, (error, data) => {
   if (!error){
     todos = JSON.parse(data);
+    setupCurrentIdTodos(todos);
   } else {
     console.error(error);
   }
@@ -43,19 +63,13 @@ const writeCATEGORYtoFile = () => {
   });
 }
 
-const { listTodos, addTodo, updateTodo, deleteTodo, setupCurrentIdTodos } = require("./todos-route");
-const { listCategories, addCategory, updateCategory, deleteCategory, setupCurrentIdCategories } = require("./category-route");
-
-setupCurrentIdTodos(todos);
-setupCurrentIdCategories(categories);
-
 function processRequest(request, response){
 
     const reqUrl = url.parse(request.url, true);
     if (reqUrl.pathname == "/todo"){
         switch(request.method) {
             case "GET":
-              listTodos(request, response, reqUrl, todos, categories, writeTODOtoFile);
+              listTodos(request, response, reqUrl, connection);
               break;
             case "POST":
               addTodo(request, response, reqUrl, todos, categories, writeTODOtoFile);

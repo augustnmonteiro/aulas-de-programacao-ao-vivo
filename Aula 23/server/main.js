@@ -4,9 +4,22 @@ const url = require("url");
 const fs = require("fs");
 const path = require("path");
 
+/**
+ * Adicionar uma rota para criar usuario "/user" com as funções de criar/editar/listar/deletar
+ * ** O usuario devera ter {id, name, isActive, username, password}
+ * ** o username também é unico (não pode deixar criar dois usuarios com o mesmo username)
+ * *DETALHE no listar usuarios não deve mostrar a senha
+ * ** No todos e nas categorias agora devemos adicionar um userId para saber quem criou o todo ou a categoria
+ * ** No update do todo, checar se categoria existe
+ * ** O usuario também deve existir quando for adicionar todo ou categoria
+ */
+
 const options = {
   encoding: "utf-8"
 };
+
+const { listTodos, addTodo, updateTodo, deleteTodo, setupCurrentIdTodos } = require("./routes/todos");
+const { listCategories, addCategory, updateCategory, deleteCategory, setupCurrentIdCategories } = require("./routes/category");
 
 let todos = [];
 let categories = [];
@@ -14,6 +27,7 @@ let categories = [];
 fs.readFile(path.join("db", "category.json"), options, (error, data) => {
   if (!error){
     categories = JSON.parse(data);
+    setupCurrentIdCategories(categories);
   } else {
     console.error(error);
   }
@@ -22,6 +36,7 @@ fs.readFile(path.join("db", "category.json"), options, (error, data) => {
 fs.readFile(path.join("db", "todo.json"), options, (error, data) => {
   if (!error){
     todos = JSON.parse(data);
+    setupCurrentIdTodos(todos);
   } else {
     console.error(error);
   }
@@ -42,12 +57,6 @@ const writeCATEGORYtoFile = () => {
     }
   });
 }
-
-const { listTodos, addTodo, updateTodo, deleteTodo, setupCurrentIdTodos } = require("./todos-route");
-const { listCategories, addCategory, updateCategory, deleteCategory, setupCurrentIdCategories } = require("./category-route");
-
-setupCurrentIdTodos(todos);
-setupCurrentIdCategories(categories);
 
 function processRequest(request, response){
 
