@@ -1,4 +1,3 @@
-//outro comentario
 //digitar a glicemia e testar se ta dentro do intervalo saudavel.
 
 let paciente = prompt("Nome do paciente?");
