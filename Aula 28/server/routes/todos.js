@@ -43,14 +43,15 @@ function listTodos(request, response, url, connection) {
       query += ` WHERE deleted_at IS NULL`;
     }
   }
-  connection.query(query, (error, result) => {
+  function callback(error, result) {
     if (error) {
       response.statusCode = 404;
       response.end("NOT FOUND");
     } else {
       response.end(JSON.stringify(result));
     }
-  });
+  }
+  connection.query(query, callback);
 }
 
 function deleteTodo(request, response, url, connection) {
